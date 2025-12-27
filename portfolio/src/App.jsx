@@ -65,7 +65,7 @@ function App() {
       {/* --- NAVBAR --- */}
       <nav className="relative z-50 flex justify-between items-center px-8 py-6 max-w-7xl mx-auto backdrop-blur-sm">
         <div className="text-2xl font-bold tracking-wider cursor-pointer">
-          DEV<span className="text-neon-purple">PORTFOLIO</span>
+          MY<span className="text-neon-purple">PORTFOLIO</span>
         </div>
         <div className="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
           <a href="#projects" className="hover:text-neon-blue transition">
@@ -298,27 +298,38 @@ function App() {
           </a>
 
           <p className="text-gray-500 mt-12 text-sm">
-            © 2025 Joel Chandler Pili. Built with React & Tailwind.
+            © 2025 Joel Chandler Pili. Built Different.
           </p>
         </div>
       </footer>
 
       {/* --- PROJECT MODAL --- */}
       {selectedProject && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={() => setSelectedProject(null)}
-        >
-          <div
-            className="bg-deep-bg border border-white/10 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
-            onClick={(e) => e.stopPropagation()} // Prevent close on inner click
-          >
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          {/* Note: We removed the onClick handler from the div above */}
+
+          <div className="bg-deep-bg border border-white/10 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            {/* Note: We also removed 'e.stopPropagation()' here since it's no longer needed */}
+
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-gray-400 hover:text-white z-10 bg-black/50 p-2 rounded-full"
+              className="absolute top-4 right-4 text-gray-400 hover:text-white z-10 bg-black/50 p-2 rounded-full transition"
               onClick={() => setSelectedProject(null)}
             >
-              ✕
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
             </button>
 
             {/* Modal Content */}

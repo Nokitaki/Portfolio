@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import profilePic from "./assets/me.jpg";
 
+// --- ASSET IMPORTS ---
+import wildlitzVid from "./assets/wildlitz.mp4";
+import commuDevVid from "./assets/commudev.mp4";
+import fotcVid from "./assets/fotc.mp4";
+import notesVid from "./assets/notes.mp4";
+
 function App() {
   // --- STATE FOR MODAL ---
   const [selectedProject, setSelectedProject] = useState(null);
@@ -35,6 +41,7 @@ function App() {
       tags: ["React+Vite", "Django DRF", "PostgreSQL", "Framer Motion", "OpenAI API"],
       demoLink: "https://wildlitz-capstone-raeg.onrender.com/",
       githubLink: "https://github.com/Nokitaki/WildLitz-Capstone.git",
+      video: wildlitzVid,
     },
     {
       id: 2,
@@ -48,6 +55,7 @@ function App() {
       // Separate links for decoupled architecture
       frontendLink: "https://github.com/Nokitaki/CommuDev-IE.git",
       backendLink: "https://github.com/Nokitaki/CommuDev-Appdev.git",
+      video: commuDevVid,
     },
     {
       id: 3,
@@ -59,6 +67,7 @@ function App() {
         "Fight of the Characters is a turn-based strategy fighting game that demonstrates advanced Object-Oriented Programming concepts. It features a diverse roster of characters (Naruto, Sasuke, Gojo, etc.) created using the Factory Pattern. The game includes multiple stages, a leaderboard system, and custom graphical components built entirely with Java Swing. It showcases inheritance, polymorphism, and complex state management in a desktop application.",
       tags: ["Java", "Swing GUI", "OOP Patterns", "Factory Pattern", "Game Logic"],
       githubLink: "https://github.com/Nokitaki/Fight-of-the-Characters",
+      video: fotcVid,
     },
     {
       id: 4,
@@ -70,6 +79,7 @@ function App() {
         "This project bridges traditional web development with Web3 concepts. Built on the PERN stack (PostgreSQL, Express, React, Node.js), it allows users to manage personal notes securely. It utilizes the MeshSDK for Cardano wallet integration to handle user identity without traditional passwords. The backend employs raw SQL with the 'pg' library for efficient and direct database interactions.",
       tags: ["React", "Node.js", "Express", "PostgreSQL", "Raw SQL", "Web3 Auth"],
       githubLink: "https://github.com/Nokitaki/Notes",
+      video: notesVid,
     },
   ];
 
@@ -170,21 +180,31 @@ function App() {
                 index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
               } items-center gap-12 group`}
             >
-              {/* Project Visual */}
+              {/* Project Visual - NOW WITH VIDEO */}
               <div
                 className="w-full md:w-3/5 relative cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="absolute -inset-2 bg-gradient-to-r from-neon-purple to-neon-blue rounded-2xl blur-lg opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <div className="relative h-[350px] bg-black/40 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm flex items-center justify-center group-hover:border-white/30 transition">
-                  <div className="text-center">
-                    <span className="text-5xl mb-2 block opacity-50">🎬</span>
-                    <p className="text-gray-500 font-mono text-sm">
-                      Click to View Details
-                      <br />
-                      {project.title} Visual
-                    </p>
+                <div className="relative h-[350px] bg-black/40 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm flex items-center justify-center group-hover:border-white/30 transition shadow-2xl">
+                  
+                  {/* Video Background (Autoplay, Muted, Loop) */}
+                  <video
+                    src={project.video}
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700 ease-in-out"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+
+                  {/* Play Button Overlay (Optional hint) */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition duration-300">
+                    <div className="bg-black/50 p-4 rounded-full backdrop-blur-sm border border-white/20">
+                      <span className="text-3xl">▶️</span>
+                    </div>
                   </div>
+
                 </div>
               </div>
 
@@ -326,11 +346,12 @@ function App() {
       {/* --- PROJECT MODAL --- */}
       {selectedProject && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-deep-bg border border-white/10 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+          {/* Increased max-width to 6xl for larger video area */}
+          <div className="bg-deep-bg border border-white/10 rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
             
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-gray-400 hover:text-white z-10 bg-black/50 p-2 rounded-full transition"
+              className="absolute top-4 right-4 text-gray-400 hover:text-white z-20 bg-black/50 p-2 rounded-full transition"
               onClick={() => setSelectedProject(null)}
             >
               <svg
@@ -351,17 +372,18 @@ function App() {
 
             {/* Modal Content */}
             <div className="grid md:grid-cols-2">
-              {/* Visual Side */}
-              <div className="h-64 md:h-full bg-gray-900 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-neon-blue/20"></div>
-                <div className="text-center relative z-10">
-                  <span className="text-6xl mb-4 block">🎬</span>
-                  <p className="text-gray-400 text-sm">
-                    {selectedProject.title} Demo
-                    <br />
-                    (Visual Placeholder)
-                  </p>
-                </div>
+              {/* Visual Side - NOW WITH VIDEO - UPDATED SIZING */}
+              <div className="h-64 md:h-full bg-black flex items-center justify-center relative overflow-hidden rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-neon-blue/20 pointer-events-none z-10"></div>
+                
+                {/* Full Video with Controls - OBJECT CONTAIN */}
+                <video 
+                  src={selectedProject.video}
+                  className="w-full h-full object-contain" 
+                  controls
+                  autoPlay
+                  muted={false} // Allow sound in modal if user wants
+                />
               </div>
 
               {/* Text Side */}

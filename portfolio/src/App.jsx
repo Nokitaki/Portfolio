@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import profilePic from "./assets/me.jpg";
 
 function App() {
   // --- STATE FOR MODAL ---
@@ -25,7 +26,7 @@ function App() {
   const projects = [
     {
       id: 1,
-      title: "Full-Stack Web App",
+      title: "Wildlitz",
       category: "React + Django",
       description:
         "A complete CRUD application featuring user authentication and dynamic UI.",
@@ -101,7 +102,11 @@ function App() {
             </span>
           </h1>
           <p className="text-gray-400 text-lg mb-8 max-w-lg leading-relaxed">
-            I am a full-stack developer turning ideas into reality. Check out my
+            I am{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue font-extrabold text-xl">
+              Joel Chandler G. Pili
+            </span>
+            , a full-stack developer turning ideas into reality. Check out my
             college projects and technical journey below.
           </p>
 
@@ -124,14 +129,11 @@ function App() {
         <div className="md:w-1/2 flex justify-center relative">
           <div className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full blur-3xl opacity-20 animate-pulse"></div>
           {/* FACE PLACEHOLDER */}
-          <div className="relative w-80 h-80 md:w-[450px] md:h-[450px] bg-gradient-to-b from-white/10 to-transparent rounded-3xl border border-white/10 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500">
-            <span className="text-6xl mb-4">👋</span>
-            <p className="text-gray-300 font-mono text-sm">
-              [PLACEHOLDER: YOUR FACE]
-              <br />
-              Insert Image or Video Here
-            </p>
-          </div>
+          <img
+            src={profilePic}
+            alt="Joel Chandler Pili"
+            className="relative w-80 h-80 md:w-[450px] md:h-[450px] object-cover rounded-full border-4 border-white/10 shadow-2xl shadow-neon-purple/50 transform hover:scale-105 transition duration-500"
+          />
         </div>
       </main>
 

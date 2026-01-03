@@ -17,43 +17,59 @@ function App() {
 
   const frameworks = [
     { name: "React + Vite", level: 90, color: "bg-cyan-400" },
-    { name: "Django", level: 75, color: "bg-green-600" },
-    { name: "Spring Boot", level: 70, color: "bg-green-500" },
-    { name: "AWS (EC2/S3)", level: 60, color: "bg-yellow-500" },
+    { name: "Node.js / Express", level: 85, color: "bg-green-500" },
+    { name: "Spring Boot", level: 70, color: "bg-green-600" },
+    { name: "PostgreSQL", level: 75, color: "bg-blue-500" },
   ];
 
-  // --- PROJECT DATA (From Resume) ---
+  // --- PROJECT DATA ---
   const projects = [
     {
       id: 1,
       title: "Wildlitz",
-      category: "React + Django",
+      category: "Capstone Project | EdTech",
       description:
-        "A complete CRUD application featuring user authentication and dynamic UI.",
+        "An interactive literacy platform for Grade 3 students featuring gamified phonics learning.",
       longDescription:
-        "Built a comprehensive web application bridging a React frontend with a Django REST Framework backend. Features include secure JWT authentication, real-time data updates using Axios, and a responsive UI designed with Tailwind CSS. This project demonstrates proficiency in connecting complex backend logic with modern frontend frameworks.",
-      tags: ["React", "Django", "Axios", "REST API"],
-      // Use 'even' ID to swap image position
+        "A comprehensive educational platform designed to improve literacy for Filipino Grade 3 students. It combines proven phonics-based instruction with engaging game mechanics like the 'Syllable Clapping Game', 'Sound Safari', and 'Phonics Crossword'. The system features a React+Vite frontend with rich Framer Motion animations, a Django REST Framework backend with PostgreSQL/Supabase, and OpenAI integration for dynamic content generation.",
+      tags: ["React+Vite", "Django DRF", "PostgreSQL", "Framer Motion", "OpenAI API"],
+      demoLink: "https://wildlitz-capstone-raeg.onrender.com/",
+      githubLink: "https://github.com/Nokitaki/WildLitz-Capstone.git",
     },
     {
       id: 2,
-      title: "AWS Cloud Lab",
-      category: "Cloud Infrastructure",
+      title: "CommuDev",
+      category: "Social Platform | Productivity",
       description:
-        "Deployed demo applications using EC2, S3, and IAM configurations.",
+        "A collaborative hub for developers featuring newsfeeds, task management, and rewards.",
       longDescription:
-        "A hands-on cloud infrastructure project where I set up and managed EC2 instances for hosting, configured S3 buckets for secure storage, and implemented IAM roles for access management. This project simulates real-world DevOps tasks and server management.",
-      tags: ["AWS EC2", "AWS S3", "IAM", "Cloud Ops"],
+        "CommuDev is a full-stack social platform built to foster collaboration among students and developers. It integrates social networking features like a real-time newsfeed and direct messaging with essential productivity tools such as a Kanban-style Task Manager and a shared Resource Hub. The application uses a decoupled architecture with a gamified rewards system to encourage user engagement.",
+      tags: ["React+Vite", "Spring Boot", "Java", "MySQL", "CSS Modules"],
+      // Separate links for decoupled architecture
+      frontendLink: "https://github.com/Nokitaki/CommuDev-IE.git",
+      backendLink: "https://github.com/Nokitaki/CommuDev-Appdev.git",
     },
     {
       id: 3,
-      title: "Cardano Blockchain Node",
-      category: "Blockchain Tech",
+      title: "Fight of the Characters",
+      category: "Game Dev | Java OOP",
       description:
-        "Configured and operated a Cardano testnet node to validate transactions.",
+        "A 2D desktop fighting game featuring iconic anime characters built with Java Swing.",
       longDescription:
-        "Deep dive into blockchain architecture by setting up a functional Cardano Node. I explored the UTXO model, wallet management, and transaction validation processes. This project highlights my ability to work with decentralized systems and complex command-line tools.",
-      tags: ["Blockchain", "Cardano", "Linux", "Node Ops"],
+        "Fight of the Characters is a turn-based strategy fighting game that demonstrates advanced Object-Oriented Programming concepts. It features a diverse roster of characters (Naruto, Sasuke, Gojo, etc.) created using the Factory Pattern. The game includes multiple stages, a leaderboard system, and custom graphical components built entirely with Java Swing. It showcases inheritance, polymorphism, and complex state management in a desktop application.",
+      tags: ["Java", "Swing GUI", "OOP Patterns", "Factory Pattern", "Game Logic"],
+      githubLink: "https://github.com/Nokitaki/Fight-of-the-Characters",
+    },
+    {
+      id: 4,
+      title: "Secure Notes App",
+      category: "Web3 Integration | Full Stack",
+      description:
+        "A secure note-taking application featuring wallet-based authentication and database persistence.",
+      longDescription:
+        "This project bridges traditional web development with Web3 concepts. Built on the PERN stack (PostgreSQL, Express, React, Node.js), it allows users to manage personal notes securely. It utilizes the MeshSDK for Cardano wallet integration to handle user identity without traditional passwords. The backend employs raw SQL with the 'pg' library for efficient and direct database interactions.",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "Raw SQL", "Web3 Auth"],
+      githubLink: "https://github.com/Nokitaki/Notes",
     },
   ];
 
@@ -293,7 +309,9 @@ function App() {
           </p>
 
           <a
-            href="mailto:joelchandlerp@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=joelchandlerp@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-deep-bg px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             Let's Talk
@@ -308,11 +326,8 @@ function App() {
       {/* --- PROJECT MODAL --- */}
       {selectedProject && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          {/* Note: We removed the onClick handler from the div above */}
-
           <div className="bg-deep-bg border border-white/10 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
-            {/* Note: We also removed 'e.stopPropagation()' here since it's no longer needed */}
-
+            
             {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-gray-400 hover:text-white z-10 bg-black/50 p-2 rounded-full transition"
@@ -378,14 +393,54 @@ function App() {
                   </div>
                 </div>
 
-                <a
-                  href="https://github.com/Nokitaki?tab=repositories"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-neon-blue text-deep-bg font-bold px-8 py-3 rounded-full hover:bg-white transition"
-                >
-                  View Code on GitHub
-                </a>
+                {/* DYNAMIC ACTION BUTTONS */}
+                <div className="flex flex-col gap-4">
+                  {/* LIVE DEMO BUTTON (If available) */}
+                  {selectedProject.demoLink && (
+                    <a
+                      href={selectedProject.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full text-center bg-gradient-to-r from-neon-purple to-accent-pink text-white font-bold px-8 py-3 rounded-full hover:scale-105 transition shadow-lg shadow-neon-purple/25"
+                    >
+                      🚀 View Live Demo
+                    </a>
+                  )}
+
+                  {/* REPOSITORY BUTTONS */}
+                  <div className="flex flex-col sm:flex-row gap-4 w-full">
+                    {selectedProject.frontendLink && selectedProject.backendLink ? (
+                      <>
+                        <a
+                          href={selectedProject.frontendLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 text-center bg-neon-blue text-deep-bg font-bold px-6 py-3 rounded-full hover:bg-white transition"
+                        >
+                          Frontend Repo
+                        </a>
+                        <a
+                          href={selectedProject.backendLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 text-center border border-neon-blue text-neon-blue font-bold px-6 py-3 rounded-full hover:bg-neon-blue hover:text-deep-bg transition"
+                        >
+                          Backend Repo
+                        </a>
+                      </>
+                    ) : (
+                      <a
+                        href={selectedProject.githubLink || "https://github.com/Nokitaki?tab=repositories"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center bg-neon-blue text-deep-bg font-bold px-8 py-3 rounded-full hover:bg-white transition"
+                      >
+                        View Code on GitHub
+                      </a>
+                    )}
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

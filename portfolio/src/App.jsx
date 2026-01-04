@@ -42,6 +42,13 @@ function App() {
       demoLink: "https://wildlitz-capstone-raeg.onrender.com/",
       githubLink: "https://github.com/Nokitaki/WildLitz-Capstone.git",
       video: wildlitzVid,
+      team: [
+        { name: "Joel Chandler Pili", role: "Lead Developer, Architect, Full Stack" },
+        { name: "Garvey Gene Sanjorjo", role: "Project Manager, API Integrator, Docs" },
+        { name: "Kenji Ermita", role: "Database Engineer, API Integrator, Full Stack" },
+        { name: "Francis Kyle Lorenzana", role: "Full Stack Dev, Documentation" },
+        { name: "Spencer Nacarion", role: "Full Stack Dev, Documentation" },
+      ]
     },
     {
       id: 2,
@@ -56,6 +63,13 @@ function App() {
       frontendLink: "https://github.com/Nokitaki/CommuDev-IE.git",
       backendLink: "https://github.com/Nokitaki/CommuDev-Appdev.git",
       video: commuDevVid,
+      team: [
+        { name: "Joel Chandler Pili", role: "Lead Developer, Architect, Full Stack" },
+        { name: "Kenji Ermita", role: "Full Stack Developer" },
+        { name: "Francis Kyle Lorenzana", role: "Full Stack Developer" },
+        { name: "Garvey Gene Sanjorjo", role: "Full Stack Developer" },
+        { name: "Ed Kyle Estilliore", role: "Frontend Developer" },
+      ]
     },
     {
       id: 3,
@@ -68,6 +82,13 @@ function App() {
       tags: ["Java", "Swing GUI", "OOP Patterns", "Factory Pattern", "Game Logic"],
       githubLink: "https://github.com/Nokitaki/Fight-of-the-Characters",
       video: fotcVid,
+      team: [
+        { name: "Joel Chandler Pili", role: "Lead Developer, Architect, Full Stack" },
+        { name: "John Ragelo Gare", role: "Project Manager" },
+        { name: "Kenji Ermita", role: "Database Engineer" },
+        { name: "Claire Andrea Saniel", role: "Full Stack Developer" },
+        { name: "Ezzel Jan Francisco", role: "Full Stack Developer" },
+      ]
     },
     {
       id: 4,
@@ -80,6 +101,14 @@ function App() {
       tags: ["React", "Node.js", "Express", "PostgreSQL", "Raw SQL", "Web3 Auth"],
       githubLink: "https://github.com/Nokitaki/Notes",
       video: notesVid,
+      team: [
+        { name: "Ronan Jake Pacquera", role: "Lead Developer" },
+        { name: "Joel Chandler Pili", role: "Software Architect, Backend Developer" },
+        { name: "Alexa Hara Tumungha", role: "Full Stack Developer" },
+        { name: "Claire Andrea Saniel", role: "Frontend Developer" },
+        { name: "Ezzel Jan Francisco", role: "Frontend Developer" },
+        { name: "Miguel Antonio Dakay", role: "Frontend Developer" },
+      ]
     },
   ];
 
@@ -178,7 +207,7 @@ function App() {
               key={project.id}
               className={`flex flex-col ${
                 index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
-              } items-center gap-12 group`}
+              } items-start gap-12 group`}
             >
               {/* Project Visual - NOW WITH VIDEO */}
               <div
@@ -217,7 +246,9 @@ function App() {
                 <p className="text-gray-400 leading-relaxed mb-6">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-3 mb-8">
+                
+                {/* TAGS */}
+                <div className="flex flex-wrap gap-3 mb-6">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -227,6 +258,25 @@ function App() {
                     </span>
                   ))}
                 </div>
+
+                {/* DEVELOPMENT TEAM LIST (Added here) */}
+                {project.team && (
+                  <div className="mb-8 p-4 bg-white/5 rounded-xl border border-white/5">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+                      <span className="w-2 h-2 bg-neon-purple rounded-full"></span> Development Team
+                    </h4>
+                    <div className="flex flex-col gap-2">
+                      {project.team.map((member, idx) => (
+                        <div key={idx} className="text-xs">
+                          <span className="text-gray-200 font-bold">{member.name}</span>
+                          <span className="text-gray-500 mx-2">|</span>
+                          <span className="text-gray-400">{member.role}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <button
                   onClick={() => setSelectedProject(project)}
                   className="text-sm font-bold border-b border-neon-purple pb-1 hover:text-neon-purple transition flex items-center gap-2"

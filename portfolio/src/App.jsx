@@ -148,7 +148,7 @@ function App() {
       <main className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col md:flex-row items-center justify-between">
         <div className="md:w-1/2 text-left mb-16 md:mb-0">
           <div className="inline-block px-3 py-1 mb-4 border border-neon-blue/30 rounded-full bg-neon-blue/10 text-neon-blue text-xs font-bold tracking-wide uppercase">
-            Available for work
+            Available for OJT work
           </div>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
             Building the <br />
